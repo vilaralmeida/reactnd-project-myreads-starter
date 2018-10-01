@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import Book from './Book'
 
-class BookRow extends Component {
+
+/**
+ * 
+ * Classe que representa os livros de uma mesma categoria
+ */
+class BookCategoria extends Component {
 
   render(){
     return(
@@ -17,4 +22,4 @@ class BookRow extends Component {
   }
 }
 
-export default BookRow
+export default BookCategoria

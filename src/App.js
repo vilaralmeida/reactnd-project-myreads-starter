@@ -38,12 +38,16 @@ class BooksApp extends React.Component {
     })
   }
 
+
+
   // Atualizando cada livro para sua devida prateleira
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       this.setState((state) => ({
         books: state.books.map((b) => (this.updateBookShelfState(b, book, shelf)))
       }))
+      // Necessario atualizar a pagina para que o livro apareça na pagina principal
+      window.location.reload()
     })
   }
 

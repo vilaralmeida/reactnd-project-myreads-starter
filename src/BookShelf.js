@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import BookRow from './BookRow'
+import BookCategoria from './BookCategoria'
 
 /**
  * 
@@ -27,9 +27,9 @@ class BookShelf extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <BookRow title="Currently Reading" books={currentlyReading} updateShelf={this.props.updateShelf} />
-            <BookRow title="Want to Read" books={wantToRead} updateShelf={this.props.updateShelf} />
-            <BookRow title="Read" books={read} updateShelf={this.props.updateShelf} />
+            <BookCategoria title="Currently Reading" books={currentlyReading} updateShelf={this.props.updateShelf} />
+            <BookCategoria title="Want to Read" books={wantToRead} updateShelf={this.props.updateShelf} />
+            <BookCategoria title="Read" books={read} updateShelf={this.props.updateShelf} />
           </div>
         </div>
         <div className="open-search">

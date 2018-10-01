@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
 
+
+/**
+ * Classe que representa o livro
+ * 
+ */
 class Book extends Component {
 
 

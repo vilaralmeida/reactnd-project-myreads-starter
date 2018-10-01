@@ -2,6 +2,10 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Book from './Book'
 
+/**
+ * 
+ * Classe de busca
+ */
 class SearchBooks extends Component {
 
   state = {
@@ -17,12 +21,11 @@ class SearchBooks extends Component {
   }
 
 
-  //Function that joins the shelter status to each book
-  updateShelterToSearchResult = (res) => {
-    let coincidence
-    coincidence = this.props.books.filter((bo) => (bo.id === res.id))
-    if(coincidence[0] != null) {
-      res.shelf = coincidence[0].shelf
+  // Atualizacao da Prateleira
+  atualizarPrateleira = (res) => {
+    let s = this.props.books.filter((bo) => (bo.id === res.id))
+    if(s[0] != null) {
+      res.shelf = s[0].shelf
     }
     else {
       res.shelf = 'none'
@@ -33,11 +36,11 @@ class SearchBooks extends Component {
   render(){
 
 
-    let searchLibraryResults
+    let buscaLivro
     if(Array.isArray(this.props.searchResults) ) {
-      searchLibraryResults = this.props.searchResults.map((se) => (this.updateShelterToSearchResult(se)))
+      buscaLivro = this.props.searchResults.map((se) => (this.atualizarPrateleira(se)))
     } else {
-      searchLibraryResults = []
+      buscaLivro = []
     }
 
 
@@ -63,7 +66,7 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {searchLibraryResults.map((book) => (
+            {buscaLivro.map((book) => (
               <Book key={book.id}  book={book} updateShelf={this.props.updateShelf} />
             ))}
           </ol>

@@ -21,4 +21,4 @@ Para instalar o aplicativo
     * BookCategoria: Classe para Gestão de livros com mesmo status
     * BookShelf: Prateleira com Informação de todos os livros
 
-* Metodo de busca baseado 
+* Metodo de busca  

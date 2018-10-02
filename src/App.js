@@ -2,11 +2,10 @@ import React from 'react'
 import {Route} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import SearchBooks from './SearchBooks'
-import BookShelf from './BookShelf'
+import Busca from './Busca'
+import Prateleira from './Prateleira'
 
 /**
- * @author Rodrigo Almeida
  * @desc Classe Aplicativo do Livro
  */
 class BooksApp extends React.Component {
@@ -41,17 +40,17 @@ class BooksApp extends React.Component {
 
 
   // Atualizando cada livro para sua devida prateleira
-  updateShelf = (book, shelf) => {
+  update = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       this.setState((state) => ({
-        books: state.books.map((b) => (this.updateBookShelfState(b, book, shelf)))
+        books: state.books.map((b) => (this.atualizaPrateleira(b, book, shelf)))
       }))
       // Necessario atualizar a pagina para que o livro apareça na pagina principal
       window.location.reload()
     })
   }
 
-  updateBookShelfState = (b, book, shelf) => {
+  atualizaPrateleira = (b, book, shelf) => {
     if(b.id === book.id) b.shelf = shelf
       return b
   }
@@ -61,18 +60,13 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path="/" render={
           () => (
-            <BookShelf
-              books={this.state.books}
-            />
+            <Prateleira books={this.state.books}/>
           )}
         />
         <Route exact path="/search" render={
           () => (
-            <SearchBooks
-              searchAction={this.searchBooks}
-              searchResults={this.state.searchResults}
-              books={this.state.books}
-              updateShelf={this.updateShelf}
+            <Busca searchAction={this.searchBooks} searchResults={this.state.searchResults} 
+            books={this.state.books} update={this.update}
             />
           )}
         />

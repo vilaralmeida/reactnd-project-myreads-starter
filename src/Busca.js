@@ -6,7 +6,7 @@ import Book from './Book'
  * 
  * Classe de busca
  */
-class SearchBooks extends Component {
+class Busca extends Component {
 
   state = {
     query:''
@@ -15,20 +15,25 @@ class SearchBooks extends Component {
   // Metodo de atualizacao dos dados dos livros
   updateQuery = (query) => {
     this.setState({query: query})
+    // Se a consulta nao estiver vazia , a consulta deve ser realizada
     if(query !== '') { 
       this.props.searchAction(query) 
+      console.log("Realizando consulta com a query: " + query)
+    } else {
+      console.log("Query de consulta vazia.")
     }
   }
 
 
-  // Atualizacao da Prateleira
+  // Atualizacao da Prateleira (metodo de referencia)
   atualizarPrateleira = (res) => {
     let s = this.props.books.filter((bo) => (bo.id === res.id))
     if(s[0] != null) {
       res.shelf = s[0].shelf
-    }
-    else {
+      console.log("Foram encontrados livros para atualizacao")
+    } else {
       res.shelf = 'none'
+      console.log("Nao foram encontrados livros para atualizacao")
     }
     return res
   }
@@ -38,9 +43,11 @@ class SearchBooks extends Component {
 
     let buscaLivro
     if(Array.isArray(this.props.searchResults) ) {
-      buscaLivro = this.props.searchResults.map((se) => (this.atualizarPrateleira(se)))
+      buscaLivro = this.props.searchResults.map((param) => (this.atualizarPrateleira(param)))
+      console.log("Foram encontrados livros")
     } else {
       buscaLivro = []
+      console.log("Nao foram encontrados livros")
     }
 
 
@@ -67,7 +74,7 @@ class SearchBooks extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {buscaLivro.map((book) => (
-              <Book key={book.id}  book={book} updateShelf={this.props.updateShelf} />
+              <Book key={book.id}  book={book} update={this.props.update} />
             ))}
           </ol>
         </div>
@@ -77,4 +84,4 @@ class SearchBooks extends Component {
 
 }
 
-export default SearchBooks
+export default Busca

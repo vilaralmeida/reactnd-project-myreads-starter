@@ -8,17 +8,17 @@ import React, {Component} from 'react'
 class Book extends Component {
 
 
-  updateShelf = (shelf) => {
-    this.props.updateShelf(this.props.book, shelf)
+  update = (prat) => {
+    this.props.update(this.props.book, prat)
   }
 
 
   render(){
 
     // Variavel que armazena qual a correta prateleira onde o livro deve estar
-    let bookshelf = 'none';
+    let prateleira = 'none';
     if(this.props.book.shelf) {
-      bookshelf = this.props.book.shelf
+      prateleira = this.props.book.shelf
     }
 
     let thumbnail = this.props.book.imageLinks.thumbnail
@@ -29,7 +29,7 @@ class Book extends Component {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
             <div className="book-shelf-changer">
-              <select value={bookshelf} onChange={(event) => this.updateShelf(event.target.value)} >
+              <select value={prateleira} onChange={(event) => this.update(event.target.value)} >
                 <option value="noValue" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>

@@ -14,7 +14,7 @@ class BookCategoria extends Component {
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-              {this.props.books.map((book) => (<Book key={book.id} book={book} updateShelf={this.props.updateShelf} />))}
+              {this.props.books.map((book) => (<Book key={book.id} book={book} update={this.props.update} />))}
           </ol>
         </div>
       </div>

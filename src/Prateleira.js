@@ -7,10 +7,11 @@ import BookCategoria from './BookCategoria'
  * Classe responsavel por representar a prateleira de livros
  * 
  */
-class BookShelf extends Component {
+class Prateleira extends Component {
 
   render(){
 
+    /** Variaveis que irao compor a navegacao das paginas */
     let currentlyReading
     let wantToRead
     let read
@@ -27,9 +28,9 @@ class BookShelf extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <BookCategoria title="Currently Reading" books={currentlyReading} updateShelf={this.props.updateShelf} />
-            <BookCategoria title="Want to Read" books={wantToRead} updateShelf={this.props.updateShelf} />
-            <BookCategoria title="Read" books={read} updateShelf={this.props.updateShelf} />
+            <BookCategoria title="Currently Reading" books={currentlyReading} update={this.props.update} />
+            <BookCategoria title="Want to Read" books={wantToRead} update={this.props.update} />
+            <BookCategoria title="Read" books={read} update={this.props.update} />
           </div>
         </div>
         <div className="open-search">
@@ -42,4 +43,4 @@ class BookShelf extends Component {
 
 }
 
-export default BookShelf
+export default Prateleira

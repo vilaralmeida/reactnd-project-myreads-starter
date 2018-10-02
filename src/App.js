@@ -60,13 +60,16 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path="/" render={
           () => (
-            <Prateleira books={this.state.books}/>
+            <Prateleira books={this.state.books}
+            update={this.update}/>
           )}
         />
         <Route exact path="/search" render={
           () => (
-            <Busca searchAction={this.searchBooks} searchResults={this.state.searchResults} 
-            books={this.state.books} update={this.update}
+            <Busca searchAction={this.searchBooks} 
+            searchResults={this.state.searchResults} 
+            books={this.state.books} 
+            update={this.update}
             />
           )}
         />

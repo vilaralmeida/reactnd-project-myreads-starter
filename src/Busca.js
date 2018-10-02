@@ -38,6 +38,7 @@ class Busca extends Component {
     return res
   }
 
+
   render(){
 
 
@@ -51,7 +52,11 @@ class Busca extends Component {
     }
 
 
+
+
     return(
+
+
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to="/">Close</Link>
@@ -73,9 +78,12 @@ class Busca extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {buscaLivro.map((book) => (
-              <Book key={book.id}  book={book} update={this.props.update} />
-            ))}
+            {
+              buscaLivro && 
+              buscaLivro.map((book) => (
+                <Book key={book.id}  book={book} update={this.props.update}></Book>
+            ))
+            }
           </ol>
         </div>
       </div>

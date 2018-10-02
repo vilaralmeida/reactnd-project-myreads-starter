@@ -21,13 +21,15 @@ class Book extends Component {
       prateleira = this.props.book.shelf
     }
 
-    let thumbnail = this.props.book.imageLinks.thumbnail
+
+    let imagem = this.props.book.imageLinks &&
+    this.props.book.imageLinks.thumbnail
 
     return(
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imagem})` }}></div>
             <div className="book-shelf-changer">
               <select value={prateleira} onChange={(event) => this.update(event.target.value)} >
                 <option value="noValue" disabled>Move to...</option>
@@ -39,7 +41,9 @@ class Book extends Component {
             </div>
           </div>
           <div className="book-title">{this.props.book.title}</div>
-          {this.props.book.authors.map((author, index) => (
+          { 
+            this.props.book.authors &&
+            this.props.book.authors.map((author, index) => (
             <div key={index} className="book-authors">{author}</div>
           ))}
         </div>
